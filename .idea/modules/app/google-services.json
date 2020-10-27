@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "261352720783",
+    "firebase_url": "https://abader-health.firebaseio.com",
+    "project_id": "abader-health",
+    "storage_bucket": "abader-health.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261352720783:android:1da14399cd33f72156a3fa",
+        "android_client_info": {
+          "package_name": "com.aqeel.abaderhealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261352720783-et9vbgu9m516ki0s5mvo1e2vs49bjpc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aqeel.abaderhealth",
+            "certificate_hash": "060e0ce3e4eb382d0b394173e20ea73bd73fe42a"
+          }
+        },
+        {
+          "client_id": "261352720783-idif4sb67qgs58t1he44p50fltrk4f0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhIXchhkh0eayOYwnuCs5KYwsCAC0hbXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261352720783-idif4sb67qgs58t1he44p50fltrk4f0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
