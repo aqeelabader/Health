@@ -9,49 +9,44 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Register extends AppCompatActivity {
+public class UserLogin extends AppCompatActivity {
 
-    EditText uFullName, uEmail, uPassword;
-    Button uRegisterBtn;
-    TextView uLoginBtn;
+
+    EditText uEmail, uPassword;
+    Button uLogin;
+    TextView uCreatenew;
     FirebaseAuth Fauth;
+    ProgressBar progressBar;
+
+    private  FirebaseAuth.AuthStateListener uAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_user_login);
 
-        //assigning values
 
-        uFullName = findViewById(R.id.fullName);
         uEmail = findViewById(R.id.email);
         uPassword = findViewById(R.id.userPassword);
-        uRegisterBtn = findViewById(R.id.registerbutton);
-        uLoginBtn = findViewById(R.id.loginold);
+        uCreatenew = findViewById(R.id.registernew);
+        uLogin = findViewById(R.id.UserLoginbutton);
+        progressBar = findViewById(R.id.progressBar);
 
-        //firebaseAuth instance
 
         Fauth = FirebaseAuth.getInstance();
 
-        //checking to see if user is already logged in.
 
-        if(Fauth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-        }
-
-
-        //registration code
-
-        uRegisterBtn.setOnClickListener(new View.OnClickListener() {
+        uLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = uEmail.getText().toString().trim();
@@ -75,34 +70,23 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                //registering the user in firebase auth
+                progressBar.setVisibility(View.VISIBLE);
+                //authenticating the user
 
-                Fauth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                Fauth.signInWithEmailAndPassword(email, password).addOnCompleteListener(UserLogin.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        //if successful the user will be shown a success message and taken to the main page.
-                        //if not, they will be shown an error message with details on exactly what went wrong.
-
-                        if(task.isSuccessful()){
-                            Toast.makeText(Register.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }else{
-                            Toast.makeText(Register.this, "error, "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        if(!task.isSuccessful()){
+                            Toast.makeText(UserLogin.this, "Error, Try Again", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Intent intToMain = new Intent(UserLogin.this,MainActivity.class);
+                            startActivity(intToMain);
                         }
                     }
                 });
 
             }
         });
-
-        uLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),UserLogin.class));
-            }
-        });
-
-
     }
 }
