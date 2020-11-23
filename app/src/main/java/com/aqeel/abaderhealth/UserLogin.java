@@ -88,5 +88,13 @@ public class UserLogin extends AppCompatActivity {
 
             }
         });
+
+        uCreatenew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Register.class));
+            }
+        });
+
     }
 }
