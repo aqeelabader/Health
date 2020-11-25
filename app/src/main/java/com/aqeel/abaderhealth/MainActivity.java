@@ -97,4 +97,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(new Intent(getApplicationContext(),UserLogin.class));
         finish();
     }
+
+    public void addmeallogs(View view) {
+        startActivity(new Intent(getApplicationContext(),addmeallog.class));
+    }
+
+
+    public void addexerciselog(View view) {
+        startActivity(new Intent(getApplicationContext(),addexerciselog.class));
+    }
+
 }
