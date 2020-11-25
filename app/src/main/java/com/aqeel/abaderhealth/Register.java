@@ -1,8 +1,5 @@
 package com.aqeel.abaderhealth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
 
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),capturingInitialData.class));
                         }else{
                             Toast.makeText(Register.this, "error, "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
