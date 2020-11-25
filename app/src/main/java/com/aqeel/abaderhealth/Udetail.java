@@ -10,6 +10,10 @@ public class Udetail {
     String Tweight;
     String Tcalorie;
 
+    public Udetail() {
+        //do not remove
+    }
+
     public Udetail(String userid, String fullname, String height, String weight, String calorie, String theight, String tweight, String tcalorie) {
         Userid = userid;
         Fullname = fullname;
@@ -83,5 +87,10 @@ public class Udetail {
 
     public void setTcalorie(String tcalorie) {
         Tcalorie = tcalorie;
+    }
+
+
+    public String ToString(){
+        return "Full Name : " + Fullname +"\n"+"Height : "+height+"\n"+"Weight : "+weight+"\n"+"Calorie : "+calorie+"\n"+"Target Height : "+Theight+"\n"+"Target Weight : "+Tweight+"\n"+"Target Calorie : "+Tcalorie;
     }
 }
